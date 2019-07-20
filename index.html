@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13124,7 +13124,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="What-are-hateful-users?">What are hateful users?<a class="anchor-link" href="#What-are-hateful-users?">&#182;</a></h3><p>Social media is a great way for people to learn, connect, and support each other. Unfortunately, this positive environment is ruined when users contribute hateful content. Twitter especially is a website where hate speech has become a huge problem. On twitter's &lt;a href = "<a href="https://help.twitter.com/en/rules-and-policies/hateful-conduct-policy&quot;&gt;Hateful">https://help.twitter.com/en/rules-and-policies/hateful-conduct-policy&quot;&gt;Hateful</a> Conduct Policy&lt;/a&gt; webpage, they define the types of conduct and content that are considered "hateful".</p>
+<h3 id="What-are-hateful-users?">What are hateful users?<a class="anchor-link" href="#What-are-hateful-users?">&#182;</a></h3><p>Social media is a great way for people to learn, connect, and support each other. Unfortunately, this positive environment is ruined when users contribute hateful content. Twitter especially is a website where hate speech has become a huge problem. On twitter's <a href = "https://help.twitter.com/en/rules-and-policies/hateful-conduct-policy">Hateful Conduct Policy</a> webpage, they define the types of conduct and content that are considered "hateful".</p>
 <blockquote><p><strong>Hateful conduct:</strong> 
 You may not promote violence against or directly attack or threaten other people on the basis of race, ethnicity, national origin, sexual orientation, gender, gender identity, religious affiliation, age, disability, or serious disease. We also do not allow accounts whose primary purpose is inciting harm towards others on the basis of these categories.</p>
 </blockquote>
@@ -13132,8 +13132,8 @@ You may not promote violence against or directly attack or threaten other people
 <p>In the context of data science, identifying hateful users is an interesting problem. For this data, there are both language features and network information to take into account. This lets us explore and evaluate different kinds of data and find ways to integrate them successfully. Additionally, it will allow us to explore some classification machine learning methods.</p>
 <h3 id="How-is-Data-Science-useful-in-identifying-hateful-users?">How is Data Science useful in identifying hateful users?<a class="anchor-link" href="#How-is-Data-Science-useful-in-identifying-hateful-users?">&#182;</a></h3><p>After collecting data from twitter about its users, we will be able to analyze this data and search for patterns that suggest a user is abusive. In the end, we will create a model that will take in information from twitter and tell us who is likely to be a hateful user who needs to be removed.
 In this tutorial we will be following the data science life cycle in order to perform our task of identifying hateful users. The data science life cycle goes as follows:
-&lt;img src = "DataLifecycle.png"&gt;
-&lt;a hfref = "<a href="http://www.cs.umd.edu/class/summer2019/cmsc320/files/Lec01.pdf&quot;&gt;Image">http://www.cs.umd.edu/class/summer2019/cmsc320/files/Lec01.pdf&quot;&gt;Image</a> Source&lt;/a&gt;</p>
+<img src = "DataLifecycle.png">
+<a hfref = "http://www.cs.umd.edu/class/summer2019/cmsc320/files/Lec01.pdf">Image Source</a></p>
 
 </div>
 </div>
@@ -13177,7 +13177,7 @@ In this tutorial we will be following the data science life cycle in order to pe
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Collection">Data Collection<a class="anchor-link" href="#Data-Collection">&#182;</a></h2><p>The data we are using is a dataset found on kaggle, a website where users can upload datasets for public use. The dataset can be found and downloaded from &lt;a href = "<a href="https://www.kaggle.com/manoelribeiro/hateful-users-on-twitter&quot;&gt;here">https://www.kaggle.com/manoelribeiro/hateful-users-on-twitter&quot;&gt;here</a>.&lt;/a&gt;</p>
+<h2 id="Data-Collection">Data Collection<a class="anchor-link" href="#Data-Collection">&#182;</a></h2><p>The data we are using is a dataset found on kaggle, a website where users can upload datasets for public use. The dataset can be found and downloaded from <a href = "https://www.kaggle.com/manoelribeiro/hateful-users-on-twitter">here.</a></p>
 <h4 id="Data-Size">Data Size<a class="anchor-link" href="#Data-Size">&#182;</a></h4><p>This dataset contains information for over 100,000 users, with 5,000 of those users being labelled as either hateful or normal. The label of the remaining users is unknown. The size of the dataset is 100386 rows (or observations, or users) and 1039 columns (or attributes, or predictors).</p>
 <h4 id="Data-Content">Data Content<a class="anchor-link" href="#Data-Content">&#182;</a></h4><p>For each of the users, the dataset contains information about their activity (followers, folowees, retweets, likes, etc.), their network (who they are connected to, centrality measurements, etc.), and their content (what kinds of things they are writing about).</p>
 <p>Let's get started! To begin working with the data, download the data set from the kaggle link above and read it into a pandas dataframe. Then, to get a feel for what kind of information we have, let's print a list of all of the attributes.</p>
@@ -13297,7 +13297,7 @@ In this tutorial we will be following the data science life cycle in order to pe
 <h4 id="Empath-Attributes">Empath Attributes<a class="anchor-link" href="#Empath-Attributes">&#182;</a></h4><p>Now let's try to pick out the attributes that seem to have the biggest gap between normal and hateful users. Let's begin with the empath attributes. The empath values represent what percentage of words from the user's last 200 tweets fell into the different categories. The values are calculated with the equation:</p>
 $$\text{Empath} = \frac{\text{number of words used that fall into this category}}{\text{total number of words}}$$<p>An example would be 'feminine_empath' gives the percentage of words from the user's last 200 tweets that are considered feminine.</p>
 <p>Empath attributes beginning with "c_" indicate that this is the language the people they are interacting with use.</p>
-<h4 id="Picking-Empath-Attributes">Picking Empath Attributes<a class="anchor-link" href="#Picking-Empath-Attributes">&#182;</a></h4><p>To find the significant attributes, I want to look for the empath attributes that are at least 2 times higher or lower on average for hateful users when compared to normal users.To do this, I will just loop through each attribute, check that  it is an empath attribute using &lt;a href = "<a href="https://en.wikipedia.org/wiki/Regular_expression&quot;&gt;regular">https://en.wikipedia.org/wiki/Regular_expression&quot;&gt;regular</a> expressions&lt;/a&gt;, and calculate the means. After this operation I'm left with a list of the attributes where hateful and normal users differ the most.</p>
+<h4 id="Picking-Empath-Attributes">Picking Empath Attributes<a class="anchor-link" href="#Picking-Empath-Attributes">&#182;</a></h4><p>To find the significant attributes, I want to look for the empath attributes that are at least 2 times higher or lower on average for hateful users when compared to normal users.To do this, I will just loop through each attribute, check that  it is an empath attribute using <a href = "https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>, and calculate the means. After this operation I'm left with a list of the attributes where hateful and normal users differ the most.</p>
 
 </div>
 </div>
@@ -13516,7 +13516,7 @@ Hateful Median =  1.3355439383026761
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The distributions here are somewhat similar. They peak between 1 and 2 and then are skewed heavily to the right. However, we see that there is a difference: normal users tend to have a higher ratio than hateful users. The median values are 1.87 for normal users, and 1.34 for hateful users. While this is not a huge difference, it is large enough that we will include it in our model.</p>
-<h4 id="Community-and-Connections">Community and Connections<a class="anchor-link" href="#Community-and-Connections">&#182;</a></h4><p>Now that we have language features and followers ratio computed and visualized, let's start visualizing and integrating the graph data. Here we will be using &lt;a href = "<a href="https://networkx.github.io/&quot;&gt;networkx">https://networkx.github.io/&quot;&gt;networkx</a>&lt;/a&gt;, a python library for graph creation and analysis. From our kaggle download, we already have a graphml file that we can load directly into networkx.</p>
+<h4 id="Community-and-Connections">Community and Connections<a class="anchor-link" href="#Community-and-Connections">&#182;</a></h4><p>Now that we have language features and followers ratio computed and visualized, let's start visualizing and integrating the graph data. Here we will be using <a href = "https://networkx.github.io/">networkx</a>, a python library for graph creation and analysis. From our kaggle download, we already have a graphml file that we can load directly into networkx.</p>
 
 </div>
 </div>
@@ -13537,7 +13537,7 @@ Hateful Median =  1.3355439383026761
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With the graphml file loaded in as a graph in networkx, we can visualize some of the hateful users networks. Here I have picked just a few. We do this by looping through hateful user's IDs (which are a column in our dataframe). Then, using that ID as the origin node for our graph, we plot all of it's neighbors with corresponding colors for hateful and normal users. To make the plot I used matplotlib and networkx's draw_networkx() function. For more information on how networkx's visualization works, follow &lt;a href = "<a href="https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html&quot;&gt;this">https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html&quot;&gt;this</a> link.&lt;/a&gt;  Here, we define a neighbor/connection/edge as someone who either follows you or you follow.</p>
+<p>With the graphml file loaded in as a graph in networkx, we can visualize some of the hateful users networks. Here I have picked just a few. We do this by looping through hateful user's IDs (which are a column in our dataframe). Then, using that ID as the origin node for our graph, we plot all of it's neighbors with corresponding colors for hateful and normal users. To make the plot I used matplotlib and networkx's draw_networkx() function. For more information on how networkx's visualization works, follow <a href = "https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html">this link.</a>  Here, we define a neighbor/connection/edge as someone who either follows you or you follow.</p>
 
 </div>
 </div>
@@ -13754,20 +13754,20 @@ Hateful Median =  1.3355439383026761
 <h2 id="Model-Creation-and-Analysis">Model Creation and Analysis<a class="anchor-link" href="#Model-Creation-and-Analysis">&#182;</a></h2><p>The fun part! Now that all of our data is organized and we have found the most important characteristics for each user, we can build our model.</p>
 <h4 id="Choosing-a-model">Choosing a model<a class="anchor-link" href="#Choosing-a-model">&#182;</a></h4><p>Ultimately, the goal of our model is to be able to predict whether a user is a hateful user that is breaking the twitter conduct rules. So, we want to create a binary classifier that evaluates a user as either hateful or not hateful.</p>
 <h4 id="Binary-Classifiers">Binary Classifiers<a class="anchor-link" href="#Binary-Classifiers">&#182;</a></h4><p>There are many different ways to perform binary classification. I want to try three classification algorithms in this tutorial: Logistic Regression, Support Vector Machine, and K Nearest Neighbors.</p>
-<h3 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h3><p>&lt;img src = "sigmoid.png" width = 300 height = 400&gt;</p>
+<h3 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h3><p><img src = "sigmoid.png" width = 300 height = 400></p>
 <p>Logistic Regression creates a weight vector that corresponds to each attribute, then uses the dot product of that weight vector and the observation as the argument for the sigmoid function. The sigmoid function is bound below by zero, and above by 1, so this output represents a probability of being in one class or the other. In our case, the two classes will be hateful or not hateful, and our model will predict a probability that a user is hateful.</p>
 <p>To learn more about Logistic Regression, how it works, and it's applications, follow some of these links!</p>
-<p>&lt;a href = "<a href="https://en.wikipedia.org/wiki/Logistic_regression&quot;&gt;">https://en.wikipedia.org/wiki/Logistic_regression&quot;&gt;</a> Wikipedia &lt;/a&gt;</p>
-<p>&lt;a href = "<a href="https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc&quot;&gt;">https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc&quot;&gt;</a> Medium &lt;/a&gt;</p>
-<h3 id="Support-Vector-Machine">Support Vector Machine<a class="anchor-link" href="#Support-Vector-Machine">&#182;</a></h3><p>&lt;img src = "svm.png" width = 200 height = 200&gt;</p>
-<p>Support Vector Machines work by finding a &lt;a href = "<a href="https://en.wikipedia.org/wiki/Hyperplane&quot;&gt;hyperplane">https://en.wikipedia.org/wiki/Hyperplane&quot;&gt;hyperplane</a>&lt;/a&gt; in predictor space (this just means the n-dimensional space defined by our attributes) that maximizes the distance between the two closest vectors in the two different classes. Using this plane, we can see if our user lies below it, meaning they are not a hateful user, or above it, meaning they are a hateful user. To learn more about Support Vector Machines, follow these links!</p>
-<p>&lt;a href = "<a href="https://en.wikipedia.org/wiki/Support-vector_machine&quot;&gt;Wikipedia">https://en.wikipedia.org/wiki/Support-vector_machine&quot;&gt;Wikipedia</a>&lt;/a&gt;</p>
-<p>&lt;a href = "<a href="https://medium.com/machine-learning-101/chapter-2-svm-support-vector-machine-theory-f0812effc72&quot;&gt;Medium">https://medium.com/machine-learning-101/chapter-2-svm-support-vector-machine-theory-f0812effc72&quot;&gt;Medium</a>&lt;/a&gt;</p>
-<h3 id="K-Nearest-Neighbors">K Nearest Neighbors<a class="anchor-link" href="#K-Nearest-Neighbors">&#182;</a></h3><p>&lt;img src = "knn.png" width = 200 height = 200&gt;</p>
+<p><a href = "https://en.wikipedia.org/wiki/Logistic_regression"> Wikipedia </a></p>
+<p><a href = "https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc"> Medium </a></p>
+<h3 id="Support-Vector-Machine">Support Vector Machine<a class="anchor-link" href="#Support-Vector-Machine">&#182;</a></h3><p><img src = "svm.png" width = 200 height = 200></p>
+<p>Support Vector Machines work by finding a <a href = "https://en.wikipedia.org/wiki/Hyperplane">hyperplane</a> in predictor space (this just means the n-dimensional space defined by our attributes) that maximizes the distance between the two closest vectors in the two different classes. Using this plane, we can see if our user lies below it, meaning they are not a hateful user, or above it, meaning they are a hateful user. To learn more about Support Vector Machines, follow these links!</p>
+<p><a href = "https://en.wikipedia.org/wiki/Support-vector_machine">Wikipedia</a></p>
+<p><a href = "https://medium.com/machine-learning-101/chapter-2-svm-support-vector-machine-theory-f0812effc72">Medium</a></p>
+<h3 id="K-Nearest-Neighbors">K Nearest Neighbors<a class="anchor-link" href="#K-Nearest-Neighbors">&#182;</a></h3><p><img src = "knn.png" width = 200 height = 200></p>
 <p>The K Nearest Neighbor algorithm works by finding the k closest vectors (users) using euclidian distance to our user we wish to classify. Then, we assign whichever classification of those k vectors is most common to our user in question. To learn more about the K Nearest Neighbor algorithm, follow these links!</p>
-<p>&lt;a href = "<a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm&quot;&gt;">https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm&quot;&gt;</a> Wikipedia &lt;/a&gt;</p>
-<p>&lt;a href = "<a href="https://www.geeksforgeeks.org/k-nearest-neighbours/&quot;&gt;">https://www.geeksforgeeks.org/k-nearest-neighbours/&quot;&gt;</a> GeeksForGeeks&lt;/a&gt;</p>
-<h4 id="Implementing-the-algorithms">Implementing the algorithms<a class="anchor-link" href="#Implementing-the-algorithms">&#182;</a></h4><p>To implement these algorithms, we are going to use &lt;a href = "<a href="https://scikit-learn.org/stable/&quot;&gt;">https://scikit-learn.org/stable/&quot;&gt;</a> Sci-Kit Learn&lt;/a&gt;, a python library that has many machine learning algorithms and tools ready to use with our pandas dataframes.</p>
+<p><a href = "https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm"> Wikipedia </a></p>
+<p><a href = "https://www.geeksforgeeks.org/k-nearest-neighbours/"> GeeksForGeeks</a></p>
+<h4 id="Implementing-the-algorithms">Implementing the algorithms<a class="anchor-link" href="#Implementing-the-algorithms">&#182;</a></h4><p>To implement these algorithms, we are going to use <a href = "https://scikit-learn.org/stable/"> Sci-Kit Learn</a>, a python library that has many machine learning algorithms and tools ready to use with our pandas dataframes.</p>
 <p>To start, we need to separate our data into testing and training data. One set we will use to create our model, then the other set we will use to evaluate the accuracy of the model. We can very conveniently do this with sklearn's train_test_split() function. Here, I've chosen to use 90% of our data for training and 10% for testing.</p>
 
 </div>
